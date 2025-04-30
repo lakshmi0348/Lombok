@@ -2,14 +2,14 @@ package com.example.Lombok.service;
 
 import com.example.Lombok.model.Student;
 import com.example.Lombok.repository.StudentRepo;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 @Service
 @Slf4j
@@ -49,6 +49,34 @@ public class StudentService {
             log.error("ID is not exist on database to delete");
         log.info("Deleting the Record...");
         studentRepo.deleteById(student_id);
+    }
+    @Autowired
+    private EntityManager em;
+
+    public List<String> printNames(){
+
+
+
+        jakarta.persistence.Query query = em.createQuery("Select s.student_name from Student s");
+
+        @SuppressWarnings("unchecked")
+        List<String> list = query.getResultList();
+
+        return list;
+
+
+    }
+    public List<String> printNamesUsingStatic(){
+
+
+
+        Query query = em.createNamedQuery("findName");
+
+        @SuppressWarnings("unchecked")
+        List<String> list = query.getResultList();
+
+        return list;
+
     }
 
 

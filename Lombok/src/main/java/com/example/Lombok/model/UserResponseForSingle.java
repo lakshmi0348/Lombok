@@ -1,15 +1,13 @@
 package com.example.Lombok.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class UserResponse {
-
-    private List<UserDetails> data;
-    private List<Support> supports;
-
-
+@NoArgsConstructor
+public class UserResponseForSingle {
+    private UserDetails data;
+    private Support support;
 }

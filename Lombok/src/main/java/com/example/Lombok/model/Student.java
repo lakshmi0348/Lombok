@@ -2,10 +2,7 @@ package com.example.Lombok.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@NamedQuery(name = "findName" , query = "Select s.student_name from Student s")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
